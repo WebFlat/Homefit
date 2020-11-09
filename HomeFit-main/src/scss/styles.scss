@@ -45,7 +45,17 @@ h1,p {
 		overflow-y: visible;
 		overflow-x: hidden;
 	}
+	&--task {
+		width: 100%;
+	}
 }
+// @media screen and (min-width: 1200px) {
+// 	.wrapper {
+// 		&--task {
+// 			width: 92%;
+// 		}
+// 	}
+// }
 
 .open {
 	transform: translateX(0)!important;
@@ -259,7 +269,7 @@ h1,p {
 	display: none;
 	width: 424px;
 	max-width: 30%;
-	min-width: 300px;
+	min-width: 360px;
 	overflow: hidden;
 	background: $bg-nav;
 	&__wrap {
@@ -304,7 +314,9 @@ h1,p {
 	&__user {
 		display: flex;
 		color: $default-color;
-		margin-top: 40px;
+		padding: 40px 0 40px 0;
+		border-top: 1px solid rgba(250, 250, 250, 0.2);
+		border-bottom: 1px solid rgba(250, 250, 250, 0.2);
 	}
 	&__user-info {
 		padding-top: 10px;
@@ -385,7 +397,7 @@ h1,p {
 		font-weight: 400;
 	}
 	&__rate {
-		margin-top: 25px;
+		margin-top: 20px;
 		font-size: 1.4rem;
 		background: #232730;
 		padding: 10px 20px;
@@ -403,12 +415,12 @@ h1,p {
 	width: 100%;
 	text-align: left;
 	padding: 0;
-	margin-top: 50px;
+	margin-top: 10px;
 	li {
 	  margin: 0 0 45px 0;
 	  list-style: none;
 	  width: 100%;
-	  padding-left: 60px;
+	  padding-left: 40px;
 	  border-left: 7px solid transparent;
 	  display: flex;
 	  align-items: center;
@@ -429,8 +441,8 @@ h1,p {
 	}
 }
 .nav__icon {
-width: 34px;
-margin-right: 10px;
+	width: 32px;
+	margin-right: 10px;
 }
 
 
@@ -443,6 +455,7 @@ margin-right: 10px;
 		display: flex;
 		&__user {
 			flex-direction: column;
+			align-items: center;
 		}
 	}
 }
@@ -487,7 +500,7 @@ margin-right: 10px;
 	.wrap-trainer {
 		display: flex;
 		align-items: center;
-		padding: 85px 4% 20px 4%;
+		padding: 85px 3% 20px 3%;
 	}
 }
 
@@ -593,6 +606,7 @@ margin-right: 10px;
 		}
 		&__tel {
 			margin: 15px 0 10px 0;
+			font-size: 16px;
 		}
 		&__mail {
 			margin-top: 10px;
@@ -606,6 +620,9 @@ margin-right: 10px;
 		}
 		&__title {
 			font-size: 2.4rem;
+		}
+		&__tel {
+			font-size: 18px;
 		}
 	}
 }
@@ -806,6 +823,7 @@ margin-right: 10px;
 		&__item {
 			&.yesterday {
 				order: 1;
+				margin-left: 4%;
 			}
 			&.today {
 				order: 2;
@@ -815,17 +833,28 @@ margin-right: 10px;
 				order: 2;
 			}
 		}
+		
 	}
 }
 @media screen and (min-width: 1200px) {
 	.tasks {
 		&__title {
-			margin-left: 0;
+			margin-left: 4%;
+		}
+		&__items {
+			justify-content: space-between;
 		}
 	}
 }
+@media screen and (min-width: 1480px) {
+	.tasks {
+		&__items {
+			justify-content: space-between;
+		}
+		
+	}	
 
-
+}
 
 
 //Food block *****************************
@@ -887,6 +916,25 @@ margin-right: 10px;
 	}
 	&__name {
 		font-size: 1.4rem;
+	}
+}
+@media screen and (min-width: 1024px) {
+	.food {
+		&__item {
+			min-width: 300px;
+			height: 122px;
+		}
+		&__icon-wrap {
+			width: 73px;
+			height: 73px;
+			margin-right: 35px;
+		}
+		&__count {
+			font-size: 3.6rem;
+		}
+		&__name {
+			font-size: 1.6rem;
+		}
 	}
 }
 
@@ -1008,6 +1056,7 @@ margin-right: 10px;
 }
 
 
+
 //diet block *****************************
 .diet {
 	margin-top: 20px;
@@ -1033,14 +1082,91 @@ margin-right: 10px;
 }
 @media screen and (min-width: 720px) {
 	.advice {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
 		&__wrap {
-			margin: 0 auto;
+			margin: 0 10px 0 auto;
 		}
+		// .diet {
+		// 	margin: 20px auto 0 auto;
+		// }
+		wrapper {
+			width: auto;
+		}
+
+		&__wrap,
 		.diet {
-			margin: 20px auto 0 auto;
+			margin: 0 auto;
+			max-height: 274px;
+			height: 274px;
+			max-width: 300px;
+			width: 300px;
+			padding: 0;
+			position: relative;
+			&__img {
+				max-width: 110%;
+			}
+			&__arrow {
+				position: absolute;
+				bottom: 30px;
+				left: 50%;
+			}
+			&__link {
+				position: absolute;
+				bottom: 25px;
+				left: 30px;
+			}
+		}
+		&__title {
+			margin-left: 25px;
+			margin-top: 90px;
+		}
+		&__text {
+			margin-left: 25px;
 		}
 	}
 }
+@media screen and (min-width: 1630px) {
+	.response {
+		overflow: hidden;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		.progress {
+			width: 50%;
+		}
+		.advice {
+			width: 50%;
+		}
+		.progress__wrap {
+			height: 240px;
+		}
+		.progress__line {
+			height: 115px;
+		}
+		.progress__text {
+			display: block;
+			margin-top:25px;
+		}
+		.progress__item {
+			max-height: 160px;
+			height: 160px;
+		}
+
+	}
+
+}
+// 	.advice {
+// 		flex-direction: row;
+// 		align-items: center;
+// 		justify-content: center;
+		
+		
+	
+// 	}
+// }
 
 //workout-prog block*****************************
 .workout-prog {
@@ -1110,6 +1236,47 @@ margin-right: 10px;
 		&__wrap {
 			margin: 0 auto;
 			max-width: 450px;
+		}
+	}
+}
+@media screen and (min-width: 1200px) {
+	.workout-prog {
+		&__wrap {
+			display: flex;
+			max-width: 100%;
+			justify-content: space-between;
+			align-items: center;
+		}
+		&__lists {
+			overflow: hidden;
+			width: 35%;
+			height: 225px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		&__list {
+			margin: 30px 0;
+		}
+		&__advice {
+			overflow: hidden;
+			width: 45%;
+			height: 240px;
+			max-height: 240px;
+			margin: 0;
+			padding: 18px 40px;
+			img {
+				width: 100%;
+				height: auto;
+				@include myPos(50%,50%,-50%,-30%);
+			}
+		}
+		&__bg {
+			@include myPos(50%,50%,-50%,-50%);
+			height: 100%;
+		}
+		&__text {
+			margin-top: 10px;
 		}
 	}
 }
@@ -1212,6 +1379,7 @@ margin-right: 10px;
 		overflow: hidden;
 		margin-left: 4%;
 		min-width: 250px;
+		max-width: 310px;
 		height: 200px;
 		border-radius: 15px;
 		color: $default-color;
