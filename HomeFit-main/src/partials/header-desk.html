@@ -8,89 +8,79 @@
             </div>
         </div>
         <div class="header-desk__user">
-            <div class="header-desk__avatar-wrap">
-                <img src="../img/user.jpg" alt="user-icon" class="header-desk__user-avatar">
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="128.875" height="188.625" viewBox="0 0 128.875 188.625">
-                    <defs>
-                      <style>
-                        .cls-1 {
-                          fill: transparent;
-                          fill-rule: evenodd;
-                          stroke: aqua;
-                        }
-                      </style>
-                    </defs>
-                    <path class="cls-1" d="M63,1c17.485,2.194,34.077,6.689,46.672,13.31,12.5,7.8,20.994,17.721,19.953,57.94a298.907,298.907,0,0,1-6.212,54.586c-3.515,16.292-8.094,27.9-13.584,35.688C98.934,177.341,84.05,180.05,65.5,186.625c-18.692,7.5-35.323.69-46.516-20.66C7.635,145.762,1.725,111.016.875,89.125,0.208,65.905,6.583,46.236,17.929,29.478,29.208,13.226,45.458-.115,63,1Z" transform="translate(-0.844 -0.938)"/>
-                  </svg> -->
+            <div class="header__user-info-wrap">
+                <div class="header-desk__avatar-wrap">
+                    <img src="./img/user.jpg" alt="user-icon" class="header-desk__user-avatar">
+                </div>
+                <div class="header-desk__user-info">
+                    <span class="header-desk__user-mame" id="user-name">Екатерина</span>
+                    <span class="header-desk__user-city" id="user-city">Москва</span>
+                    <div class="header-desk__tel-wrap">
+                        <a href="tel:+79500672371" class="header-desk__user-tel" id="user-tel">+7 (950) 067 23 71</a>
+                        <a href="#">
+                        <img src="./img/viber-xs.png" alt="viber" class="header-desk__viber"></a>
+                    </div>
+                    <div class="header-desk__user-dates">
+                        <div class="header-desk__user-data">
+                            <span class="header-desk__user-num">
+                                133
+                            </span>
+                            <span class="header-desk__physiology">
+                                Вес
+                            </span>
+                        </div>
+                        <div class="header-desk__user-data">
+                            <span class="header-desk__user-num">
+                                173
+                            </span>
+                            <span class="header-desk__physiology">
+                                Рост
+                            </span>
+                        </div>
+                        <div class="header-desk__user-data">
+                            <span class="header-desk__user-num">
+                                26
+                            </span>
+                            <span class="header-desk__physiology">
+                                Возраст
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="header-desk__user-info">
-                <span class="header-desk__user-mame" id="user-name">Екатерина</span>
-                <span class="header-desk__user-city" id="user-city">Москва</span>
-                <div class="header-desk__tel-wrap">
-                    <a href="tel:+79500672371" class="header-desk__user-tel" id="user-tel">+7 (950) 067 23 71</a>
-                    <a href="#">
-                    <img src="../img/viber-xs.png" alt="viber" class="header-desk__viber"></a>
+            <div class="header-desk__rate">
+                <span class="header-desk__rate-title">Тариф</span>
+                <div class="header-desk__rate-name">
+                    <span id="rate-id">Maximum</span>
+                    <span> - </span><span id="rate-cost">2990</span><span> руб/мес.</span>
                 </div>
-                <div class="header-desk__user-dates">
-                    <div class="header-desk__user-data">
-                        <span class="header-desk__user-num">
-                            133
-                        </span>
-                        <span class="header-desk__physiology">
-                            Вес
-                        </span>
-                    </div>
-                    <div class="header-desk__user-data">
-                        <span class="header-desk__user-num">
-                            173
-                        </span>
-                        <span class="header-desk__physiology">
-                            Рост
-                        </span>
-                    </div>
-                    <div class="header-desk__user-data">
-                        <span class="header-desk__user-num">
-                            26
-                        </span>
-                        <span class="header-desk__physiology">
-                            Возраст
-                        </span>
-                    </div>
-                </div>
-                <div class="header-desk__rate">
-                    <span class="header-desk__rate-title">Тариф</span>
-                    <div class="header-desk__rate-name">
-                        <span id="rate-id">Maximum</span>
-                        <span> - </span><span id="rate-cost">2990</span><span> руб/мес.</span>
-                    </div>
-                    <time class="header-desk__rate-date" id="rate-day" datetime="2021-10-31">31.10.2021</time>
-                </div>
+                <time class="header-desk__rate-date" id="rate-day" datetime="2021-10-31">31.10.2021</time>
             </div>
         </div>
     </div>
     <ul class="wrap__links">
         <li>
-            <img src="../img/home.png" alt="home" class="nav__icon"> 
+            <img src="./img/home.png" alt="home" class="nav__icon"> 
             <a class="nav__link" href="#">Главная</a>
         </li>
         <li>
-            <img src="../img/programm.png" alt="programm" class="nav__icon">
+            <img src="./img/programm.png" alt="programm" class="nav__icon">
             <a class="nav__link" href="#">Программа питания</a>
         </li>
         <li>
-            <img src="../img/trainee.png" alt="trainee" class="nav__icon" style="height: 40px; width: 20px;">
-            <a class="nav__link" href="#" style="margin-left: 10px;">Тренировка дня</a>
+            <img src="./img/trainee.png" alt="trainee" class="nav__icon nav__icon--watch">
+            <a class="nav__link" href="#">Тренировка дня</a>
         </li>
         <li>
-            <img src="../img/report.png" alt="report" class="nav__icon"> 
+            <img src="./img/report.png" alt="report" class="nav__icon"> 
             <a class="nav__link" href="#">Отчеты</a>
         </li>
         <li>
-            <img src="../img/base.png" alt="base" class="nav__icon"> 
+            <img src="./img/base.png" alt="base" class="nav__icon"> 
             <a class="nav__link" href="#">База знаний</a>
         </li>
         <li>
-            <img src="../img/costs.png" alt="costs" class="nav__icon"> 
+            <img src="./img/costs.png" alt="costs" class="nav__icon"> 
             <a class="nav__link" href="#">Тарифы и оплата</a>
         </li>
         

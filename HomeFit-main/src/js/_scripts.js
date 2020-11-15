@@ -9,7 +9,8 @@ jQuery(function($){
 			infinite: false,
 			slidesToShow: 12,
 			slidesToScroll: 5,
-			arrows: false
+			prevArrow: $('.prev'),
+      		nextArrow: $('.next')
 		});
 	});
 
@@ -25,7 +26,11 @@ jQuery(function($){
 		$('.burger').removeClass('closed');
 	});
 	
-
+	//Menu user show*****************************************
+	$('.header__user').click(function() {
+		$('.header__menu-user').toggleClass('open-user-info');
+		$('.burger').toggleClass('click-menu');
+	});
 
 
 	//click to icon schedule*****************************
@@ -35,17 +40,24 @@ jQuery(function($){
 			target.parent().toggleClass('click-icon');
 			target.toggleClass('invert');
 			target.next('.schedule__popup').toggleClass('show-popup');
+			target.next('.schedule-xl__popup').toggleClass('show-popup');
+
 		  } else {
 		  	$('.schedule__popup').removeClass('show-popup');
 		  	$('.schedule__icon-wrap').removeClass('click-icon');
 		  	$('.schedule__icon').removeClass('invert');
+			$('.schedule-xl__popup').removeClass('show-popup');
+		  	$('.schedule-xl__icon-wrap').removeClass('click-icon');
+		  	$('.schedule-xl__name').removeClass('invert');
 			target.parent().toggleClass('click-icon');
 			target.toggleClass('invert');
 			target.next('.schedule__popup').toggleClass('show-popup');
+			target.next('.schedule-xl__popup').toggleClass('show-popup');
 
 		  }
 		};
 		$( ".schedule__icon" ).click( handler );
+		$( ".schedule-xl__name" ).click( handler );
 
 });
 

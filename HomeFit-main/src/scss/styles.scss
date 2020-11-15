@@ -11,8 +11,8 @@ $bg-nav: #151923;
 $bg-body: #f2f2f2;
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;700&display=swap');
-@import url('/fonts/MullerLight/muller.css');
-// @import url('/fonts/MullerRegular/style.css');
+@import url('../font/stylesheet.css');
+
 
 html {
 	font-size: 10px;
@@ -24,10 +24,13 @@ html {
 body {
 	font-size: 1.8rem;
 	min-height: 100%;
-	font-family: 'Muller';
+	font-family: 'Muller';	
 	font-weight: 400;
 	background: $bg-body;
-
+	background-image: url(./../img/Ellipse.png);
+    background-size: 104%;
+    background-position: right top;
+    background-repeat: no-repeat;
 }
 h1,p {
 	padding: 0;
@@ -36,7 +39,7 @@ h1,p {
 
 //Helpers*******************************************
 .wrapper {
-	max-width: 1321px;
+	// max-width: 1321px;
 	width: 93%;
 	margin: 0 auto;
 	height: 100%;
@@ -49,19 +52,28 @@ h1,p {
 		width: 100%;
 	}
 }
-// @media screen and (min-width: 1200px) {
-// 	.wrapper {
-// 		&--task {
-// 			width: 92%;
-// 		}
-// 	}
-// }
+@media screen and (min-width: 1024px) {
+	.liquid {
+		max-width: 1030px;
+		margin: 0 auto;
+		overflow: hidden;
+		padding: 0 40px;
+	}
+	.wrapper {
+		width: 100%;
+	}
+}
+
+
 
 .open {
 	transform: translateX(0)!important;
 }
+.open-user-info {
+	transform: translateY(0)!important;
+}
 .click-menu {
-	background: $btn-color;
+	background: $btn-color !important;
 }
 
 
@@ -70,10 +82,12 @@ h1,p {
 	display: none;
 }
 .burger {
+	z-index: 10;
 	width: 70px;
 	cursor: pointer;
 	position: absolute;
 	right: 0;
+	top: 0;
 	text-align: right;
 	display: flex;
 	flex-direction: column;
@@ -118,7 +132,7 @@ h1,p {
 	right: 0;	
 	z-index: 100000;
 	min-width: 240px;
-	width: 258.36px;
+	width: 240px;
 	&__links {
         width: 100%;
 		text-align: left;
@@ -127,7 +141,7 @@ h1,p {
 		  margin: 10px 0;
 		  list-style: none;
 		  width: 100%;
-		  padding-left: 25px;
+		  padding-left: 15px;
 		  border-left: 7px solid transparent;
 		  display: flex;
 		  align-items: center;
@@ -139,13 +153,16 @@ h1,p {
 			a {
 				text-decoration: none;
 				display: inline-block;
-				padding: 15px 10px;
+				padding: 15px 5px;
 				outline: transparent;
 				color: $default-color;
 				text-transform: uppercase;
 				font-size: 1.4rem;
 			}
 		}
+	}
+	.nav__link--margin {
+		margin-left: 8px;
 	}
 }
 .nav__icon {
@@ -169,15 +186,82 @@ h1,p {
 	}
 	.content {
 		flex: 1;
-		width: 70%;
-		background-image: url('./../img/Ellipse.png');
-		background-size: contain;
-		background-position: right top;
-		background-repeat: no-repeat;
+		// width: 70%;
+		margin: 0 auto;
+		// background-image: url('./../img/Ellipse.png');
+		// background-size: contain;
+		// background-position: right top;
+		// background-repeat: no-repeat;
+		margin-left: 265px;
 	}
 }
 
+//Arrow slider******************************************
+.next {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url('../img/next.png') no-repeat;
+}
+.prev {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url('../img/prev.png') no-repeat;
+}
 
+//Icon link**********************************************
+.icon-link {
+	position: fixed;
+	z-index: 10000;
+	right: -210px;
+	top: 20px;
+	display: flex;
+	flex-direction: column;
+	&__item {
+		display: flex;
+		align-items: center;
+		height: 60px;
+		width: 200px;
+		padding-left: 30px;
+		border-radius: 40px;
+		transform: translateX(-50px);
+		@include tr(all, .2s);
+		box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.2);
+		&:nth-of-type(1) {
+			background: $default-color;
+			margin-bottom: 20px;
+		}
+		&:nth-of-type(2) {
+			background: $btn-color;
+		}
+		img {
+			width: 33px;
+			height: 33px;
+		}
+		&:hover, 
+		&:focus {
+			transform: translateX(-80px);
+		}
+	}
+}
+@media screen and (max-width:1023px) {
+	.icon-link {
+		top: 35%;
+		&__item {
+			padding-left: 15px;
+			height: 40px;
+			transform: translateX(-40px);
+			img {
+				width: 20px;
+				height: 20px;
+			}
+			&:nth-of-type(1) {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
 
 //Header************************************************
 .header {
@@ -203,7 +287,6 @@ h1,p {
 	}
 	&__logo-img {
 		width: 44px;
-		// height: 35px;
 		margin-right: 5px;
 	}
 	&__logo-title {
@@ -229,13 +312,14 @@ h1,p {
 	&__burger {
 		position: relative;
 	}
-	&__user {
-		display: flex;
-		background: #202532;
-		height: 100%;
-		align-items: center;
-		margin-right: 70px;
-	}
+	// &__user {
+	// 	display: flex;
+	// 	background: #202532;
+	// 	height: 65px;
+	// 	align-items: center;
+	// 	margin-right: 70px;
+	// 	cursor: pointer;
+	// }
 	&__avatar-wrap {
 		width: 44px;
 		height: 44px;
@@ -262,33 +346,145 @@ h1,p {
 		font-size: 1.2rem;
 		opacity: .5;
 	}
+	&__user {
+		display: flex;
+		background: #202532;
+		height: 100%;
+		max-width: 180px;
+		overflow-x: hidden;
+		overflow-y: visible;
+		align-items: center;
+		margin-right: 60px;
+		z-index: 10;
+		cursor: pointer;		
+	}
+	&__menu-user {
+		background: #202532;
+		transform: translateY(-500%);
+		transition: transform .4s ease;
+		height: 100%;
+		min-height: 168px;
+		width: 240px;
+		position: absolute;
+		z-index: 5;
+		top: 65px;
+		right: 0;
+		display: flex;
+		flex-direction: column;
+		color: $default-color;
+	}
+	&__menu-user-wrap-info {
+		background: #202532;
+		padding: 10px 0 10px 26px;
+		width: 100%;
+	}
+	&__menu-user-info {
+		display: flex;
+		align-items: center;
+	}
+	&__menu-user-viber {
+		margin-left: 15px;
+		font-size: 1.2rem;
+	}
+	&__menu-user-tel {
+		text-decoration: none;
+		color: $default-color;
+		font-size: 1.3rem;
+		font-weight: 700;
+	}
+	&__menu-user-dates {
+		margin-top: 10px;
+		display: flex;
+		width: 140px;
+		justify-content: space-between;
+	}
+	&__menu-user-data {
+		display: flex;
+		flex-direction: column;
+		&:nth-of-type(2) {
+			position: relative;
+			&::before,
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				height: 80%;
+				width: 1px;
+				top: 50%;
+				transform: translateY(-50%);
+				background: $default-color;
+				opacity: .3;
+			}
+			&::before {
+				left: -15px;
+			}
+			&::after {
+				right: -15px;
+			}
+		}
+	}
+	&__menu-user-num {
+		font-size: 1.4rem;
+		font-weight: 700;
+	}
+	&__menu-physiology {
+		font-size: 1.1rem;
+		margin-top: 10px;
+	}
+	&__menu-user-rate {
+		font-size: 1.4rem;
+		background: #2e323e;
+		padding: 10px 0 10px 26px;
+		display: flex;
+		flex-direction: column;
+		min-height: 58px;
+
+	}
+	&__menu-user-rate-date {
+		margin-top: 10px;
+		display: block;
+	}
+	
 }
 .header-desk {
+	position: fixed;
+	z-index: 10000;
+	height: 100%;
+	// min-height: 100%;
 	display: flex;
 	flex-direction: column;
+	// flex: 0 0 auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 	display: none;
-	width: 424px;
-	max-width: 30%;
-	min-width: 360px;
-	overflow: hidden;
+	width: 265px;
+	max-width: 22%;
+	min-width: 265px;
 	background: $bg-nav;
+	&::-webkit-scrollbar {
+		width: 0 !important;
+	}
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
 	&__wrap {
 		display: flex;
 		flex-direction: column;
 		width: 80%;
 		margin: 0 auto;
+		min-height: 422px;
 	}
 	&__logo-wrap {
+		min-height: 58px;
 		display: flex;
 		align-items: center;
 		width: 100%;
 		font-family: 'Exo 2', sans-serif;
 		color: $default-color;
-		padding: 35px 0 40px 0;
+		padding: 25px 0 20px 0;
 	}
 	&__logo-title {
-		font-size: 4.7rem;
-		font-weight: 900;
+		font-size: 3rem;
+		font-weight: 800;
 		letter-spacing: 2px;
 		span {
 			color: $btn-color;
@@ -308,24 +504,34 @@ h1,p {
 		text-align: center;
 	}
 	&__logo-img {
-		width: 85px;
+		width: 65px;
 		margin-right: 20px;
 	}
 	&__user {
 		display: flex;
+		flex-direction: column;
 		color: $default-color;
-		padding: 40px 0 40px 0;
+		padding: 30px 0 30px 0;
+		min-height: 246px;
 		border-top: 1px solid rgba(250, 250, 250, 0.2);
 		border-bottom: 1px solid rgba(250, 250, 250, 0.2);
+		div {
+			display: flex;
+		}
+	}
+	&__user-info-wrap {
+			display: flex;
+			min-height: 145px;
 	}
 	&__user-info {
 		padding-top: 10px;
 		display: flex;
 		flex-direction: column;
+		margin-left: -10px;
 	}
 	&__user-city {
 		font-size: 1.4rem;
-		line-height: 46px;
+		line-height: 36px;
 	}
 	&__tel-wrap {
 		display: flex;
@@ -337,7 +543,7 @@ h1,p {
 	&__user-tel {
 		text-decoration: none;
 		color: $default-color;
-		font-size: 1.6rem;
+		font-size: 1.2rem;
 		font-weight: 700;
 	}
 	&__viber {
@@ -346,7 +552,7 @@ h1,p {
 	&__user-dates {
 		margin-top: 20px;
 		display: flex;
-		width: 168px;
+		width: 140px;
 		justify-content: space-between;
 	}
 	&__user-data {
@@ -367,15 +573,15 @@ h1,p {
 				opacity: .3;
 			}
 			&::before {
-				left: -20px;
+				left: -15px;
 			}
 			&::after {
-				right: -20px;
+				right: -15px;
 			}
 		}
 	}
 	&__user-num {
-		font-size: 1.6rem;
+		font-size: 1.4rem;
 		font-weight: 700;
 	}
 	&__physiology {
@@ -383,12 +589,11 @@ h1,p {
 		margin-top: 10px;
 	}
 	&__avatar-wrap {
-		min-width: 130px;
-		width: 140px;
-		height: 190px;
+		min-width: 80px;
+		width: 80px;
+		height: 120px;
 		overflow: hidden;
-		position: relative;
-		left: -20px;
+		transform: translateX(-20px);
 		clip-path: polygon(3% 50%, 3% 57%, 4% 67%, 11% 80%, 17% 87%, 23% 93%, 30% 97%, 37% 98%, 43% 98%, 52% 95%, 61% 90%, 72% 84%, 78% 79%, 84% 73%, 89% 67%, 92% 59%, 94% 49%, 95% 37%, 95% 30%, 94% 25%, 91% 17%, 86% 9%, 83% 6%, 81% 5%, 77% 3%, 73% 2%, 65% 0%, 55% 1%, 43% 3%, 34% 7%, 23% 16%, 17% 23%, 12% 31%, 6% 41%);
 	}
 	&__user-avatar {
@@ -400,11 +605,12 @@ h1,p {
 		margin-top: 20px;
 		font-size: 1.4rem;
 		background: #232730;
-		padding: 10px 20px;
-		width: 180px;
+		padding: 8px 10px 8px 20px;
+		max-width: 180px;
+		min-height: 49px;
 		overflow: hidden;
-		position: relative;
-		left: -20px;
+		display: flex;
+		flex-direction: column;
 	}
 	&__rate-date {
 		margin-top: 15px;
@@ -416,11 +622,14 @@ h1,p {
 	text-align: left;
 	padding: 0;
 	margin-top: 10px;
+	height: 100%;
+	background: $bg-nav;
+	// max-height: 426px;
 	li {
-	  margin: 0 0 45px 0;
+	  margin: 0 0 25px 0;
 	  list-style: none;
 	  width: 100%;
-	  padding-left: 40px;
+	  padding-left: 20px;
 	  border-left: 7px solid transparent;
 	  display: flex;
 	  align-items: center;
@@ -436,13 +645,17 @@ h1,p {
 			outline: transparent;
 			color: $default-color;
 			text-transform: uppercase;
-			font-size: 2rem;
+			font-size: 1.4rem;
 		}
 	}
 }
 .nav__icon {
-	width: 32px;
+	width: 26px;
 	margin-right: 10px;
+	&--watch {
+		width: 18px;
+		margin-right: 18px;
+	}
 }
 
 
@@ -453,26 +666,38 @@ h1,p {
 	}
 	.header-desk {
 		display: flex;
+	}
+}
+@media screen and (max-width: 1024px) and (max-height: 1024px) {
+	.header-desk {
+		&__logo-wrap {
+			padding: 10px 0;
+		}
 		&__user {
-			flex-direction: column;
-			align-items: center;
+			padding: 15px 0;
+		}
+		&__wrap {
+			min-height: 350px;
+		}
+
+	}
+	.wrap__links {
+		li {
+			margin: 0 0 0 0;
 		}
 	}
 }
-@media screen and (max-width: 1200px) {
-	.header-desk {
-		&__logo-title {
-			font-size: 3rem;
+@media screen and (max-width: 375px) {
+	.header {
+		&__logo {
+			display: none;
+		}
+		&__logo-wrap {
+			margin-left: 5%;
 		}
 	}
 }
-@media screen and (min-width: 1200px) {
-	.header-desk {
-		&__user {
-			flex-direction: row;
-		}
-	}	
-}
+
 
 
 
@@ -492,7 +717,6 @@ h1,p {
 @media screen and (min-width: 1024px) {
 	.wrap-trainer {
 		display: block;
-		// padding: 85px 3.5% 20px 3.5%;
 		padding: 75px 0 20px 0;
 	}
 }
@@ -500,7 +724,9 @@ h1,p {
 	.wrap-trainer {
 		display: flex;
 		align-items: center;
-		padding: 85px 3% 20px 3%;
+		justify-content: space-between;
+		padding: 85px 0 20px 0;
+		margin: 0 auto;
 	}
 }
 
@@ -510,7 +736,7 @@ h1,p {
 	&__wrap {
 		 background: $default-color;
 		 display: flex;
-		 border-radius: 20px;
+		 border-radius: 10px;
 		 overflow: hidden;
 	}
 	&__img-wrap {
@@ -588,6 +814,13 @@ h1,p {
 		
 	}
 }
+@media screen and (max-width: 370px) {
+	.trainer {
+		&__tel {
+			font-size: 1.4rem;
+		}
+	}
+}
 @media screen and (min-width: 768px) {
 	.trainer {
 		&__wrap {
@@ -624,11 +857,15 @@ h1,p {
 		&__tel {
 			font-size: 18px;
 		}
+		&__info {
+			justify-content: center;
+			margin-left: 50px;
+		}
 	}
 }
 @media screen and (min-width: 1200px) {
 	.trainer {
-		max-width: 500px;
+		max-width: 430px;
 		&__name {
 			margin: 25px 0 10px 0;
 		}
@@ -637,6 +874,9 @@ h1,p {
 		}
 		&__mail {
 			margin: 10px 0 20px 0;
+		}
+		&__info {
+			margin-left: 0;
 		}
 	}
 }	
@@ -650,21 +890,16 @@ h1,p {
 		background: $default-color;
 		display: flex;
 		flex-direction: column;
-		border-radius: 20px;
+		border-radius: 10px;
 		overflow: hidden;
 		padding: 25px 10px 20px 20px;
 	}
 	&__aducation {
 		display: flex;
 		align-items: center;
-		img {
-			// max-height: 33px;
-			
-		}
 		margin-top: 12px;
 		&:nth-of-type(2) {
 			margin-top: 5px;
-
 			.about-trainer__text {
 				margin-left: 61px;
 			}
@@ -677,6 +912,7 @@ h1,p {
 		margin-left: 20px;
 		span.red {
 			color: $btn-color;
+			font-weight: 600;
 		}
 		
 	}
@@ -702,6 +938,7 @@ h1,p {
 }
 @media screen and (min-width: 1200px) {
 	.about-trainer {
+		margin-left: 20px;
 		margin-top: 0;
 		&__wrap {
 			height: 258px;
@@ -754,7 +991,7 @@ h1,p {
 		display: inline-flex;
 		align-items: center;
 		line-height: 1;
-		font-weight: 900;
+		font-weight: 800;
 	}
 	&__day {
 		width: 100%;
@@ -774,6 +1011,7 @@ h1,p {
 	}
 	&__item {
 		min-width: 300px;
+		max-width: 312px;
 		padding: 8px 5px 20px 0;
 		border-radius: 10px;
 		border: 2px solid transparent;
@@ -823,7 +1061,7 @@ h1,p {
 		&__item {
 			&.yesterday {
 				order: 1;
-				margin-left: 4%;
+				margin-left: 0;
 			}
 			&.today {
 				order: 2;
@@ -833,28 +1071,25 @@ h1,p {
 				order: 2;
 			}
 		}
-		
-	}
-}
-@media screen and (min-width: 1200px) {
-	.tasks {
 		&__title {
-			margin-left: 4%;
+			margin-left: 0;
+		}
+		
+		
+	}
+}
+@media screen and (min-width:1315px) {
+	.tasks {
+		&__item {
+			margin: 0;
 		}
 		&__items {
 			justify-content: space-between;
+			overflow-x: inherit;
 		}
 	}
 }
-@media screen and (min-width: 1480px) {
-	.tasks {
-		&__items {
-			justify-content: space-between;
-		}
-		
-	}	
 
-}
 
 
 //Food block *****************************
@@ -865,7 +1100,7 @@ h1,p {
 	}
 	&__title {
 		font-size: 1.8rem;
-		font-weight: 900;
+		font-weight: 800;
 		margin: 5px 0 5px 4%;
 	}
 	&__items {
@@ -912,7 +1147,7 @@ h1,p {
 	}
 	&__count {
 		font-size: 3rem;
-		font-weight: 900;
+		font-weight: 800;
 	}
 	&__name {
 		font-size: 1.4rem;
@@ -921,12 +1156,13 @@ h1,p {
 @media screen and (min-width: 1024px) {
 	.food {
 		&__item {
-			min-width: 300px;
+			min-width: 230px;
 			height: 122px;
+			margin-left: 0 !important;
 		}
 		&__icon-wrap {
-			width: 73px;
-			height: 73px;
+			width: 55px;
+			height: 65px;
 			margin-right: 35px;
 		}
 		&__count {
@@ -934,6 +1170,21 @@ h1,p {
 		}
 		&__name {
 			font-size: 1.6rem;
+		}
+		&__title {
+			margin-left: 0;
+		}
+		
+	}
+}
+@media screen and (min-width: 1315px) {
+	.food {
+		&__items {
+			overflow-x: inherit;
+			justify-content: space-between;
+		}
+		&__item {
+			margin: 0;
 		}
 	}
 }
@@ -946,12 +1197,12 @@ h1,p {
 	&__wrap {
 		overflow: hidden;
 		background: $default-color;
-		border-radius: 15px;
+		border-radius: 10px;
 		padding: 20px 20px 15px 15px;
 	}
 	&__title {
 		font-size: 1.8rem;
-		font-weight: 900;
+		font-weight: 800;
 	}
 	&__subtitle {
 		font-size: 1.3rem;
@@ -1034,11 +1285,12 @@ h1,p {
 	display: flex;
 	flex-direction: column;
 	&__wrap {
-		padding: 25px 25px 35px 25px;
+		padding: 12px 7px 15px 25px;
 		position: relative;
-		border-radius: 15px;
+		border-radius: 10px;
 		overflow: hidden;
-		max-width: 400px; 
+		max-width: 413px;
+		margin: 0 auto;
 	}
 	&__img {
 		@include myPos();
@@ -1050,8 +1302,9 @@ h1,p {
 	&__text {
 		margin-top: 10px;
 		font-size: 1.3rem;
-		padding-right: 60px;
+		padding-right: 61px;
 		line-height: 14px;
+		text-overflow: ellipsis;
 	}
 }
 
@@ -1059,7 +1312,7 @@ h1,p {
 
 //diet block *****************************
 .diet {
-	margin-top: 20px;
+	margin: 20px auto 0 auto;
 	padding-right: 45px;
 	border-radius: 15px;
 	overflow: hidden;
@@ -1075,120 +1328,134 @@ h1,p {
 	}
 	&__link {
 		font-size: 1.93rem;
-		font-weight: 900;
+		font-weight: 700;
 		color: $default-color;
 		margin-right: 25px;
 	}
 }
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 1024px) {
 	.advice {
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
-		&__wrap {
-			margin: 0 10px 0 auto;
-		}
-		// .diet {
-		// 	margin: 20px auto 0 auto;
-		// }
-		wrapper {
+		.wrapper {
 			width: auto;
 		}
-
 		&__wrap,
 		.diet {
 			margin: 0 auto;
-			max-height: 274px;
-			height: 274px;
+			max-height: 270px;
+			height: 270px;
 			max-width: 300px;
 			width: 300px;
 			padding: 0;
 			position: relative;
-			&__img {
-				max-width: 110%;
-			}
-			&__arrow {
-				position: absolute;
-				bottom: 30px;
-				left: 50%;
-			}
+			
 			&__link {
 				position: absolute;
 				bottom: 25px;
 				left: 30px;
 			}
+			&__img {
+				@include myPos(50%,50%,-50%,-60%);
+				max-width: 130%;
+			}
 		}
 		&__title {
 			margin-left: 25px;
-			margin-top: 90px;
+			margin-top: 40px;
+			width: 80px;
 		}
 		&__text {
-			margin-left: 25px;
+			margin: 30px 0 0 25px;
+		}
+	}
+	.diet {
+		&__img {
+			max-width: 110%;
+			z-index: 2;
+		}
+		&__arrow,
+		&__link {
+			z-index: 5;
+		}
+		&__arrow {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
 		}
 	}
 }
-@media screen and (min-width: 1630px) {
+.response {
+	width: 100%;
+	height: auto;
+}
+@media screen and (min-width: 1524px) {
 	.response {
-		overflow: hidden;
-		display: flex;
-		justify-content: space-between;
+		display: flex; 
+		max-width: 1030px;
+		flex-wrap: nowrap;
+		margin: 0 auto;
+		flex-direction: row;
 		align-items: center;
-		flex-wrap: wrap;
-		.progress {
-			width: 50%;
-		}
-		.advice {
-			width: 50%;
-		}
-		.progress__wrap {
-			height: 240px;
-		}
-		.progress__line {
-			height: 115px;
-		}
-		.progress__text {
-			display: block;
-			margin-top:25px;
-		}
-		.progress__item {
-			max-height: 160px;
-			height: 160px;
-		}
-
 	}
-
+	.advice {
+		.wrapper {
+			margin: 0;
+		}
+		flex: 1;
+		&__wrap,
+		.diet {
+			margin: 0;
+			max-width: 260px;
+			&__arrow {
+				left: 60% !important;
+			}
+		}
+		&__text {
+			padding-right: 5px;
+		}
+	}
+	.progress {
+		width: 40%;
+		margin-right: 50px;
+		&__wrap {
+			height: 237px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
 }
-// 	.advice {
-// 		flex-direction: row;
-// 		align-items: center;
-// 		justify-content: center;
-		
-		
-	
-// 	}
-// }
+
+
+
 
 //workout-prog block*****************************
 .workout-prog {
 	&__title {
 		font-size: 1.8rem;
-		font-weight: 900;
+		font-weight: 800;
 		margin-bottom: 5px;
 	}
 	&__lists,
 	&__advice {
 		position: relative;
 		overflow: hidden;
-		border-radius: 15px;
+		text-overflow: ellipsis;
+		border-radius: 10px;
 	}
 	&__bg {
-		@include myPos(50%,50%,-50%,-40%);
-		// max-width: 100%;
+		@include myPos(50%,50%,-55%,-37%);
+		// width: 145%;
 		z-index: -1;
 		&--ad {
 			z-index: 1;
-			@include myPos(50%,50%,-50%,-50%);
+			@include myPos(50%,50%,-58%,-50%);
 		}
+	}
+	&__lists {
+		max-height: 180px;
 	}
 	&__lists,
 	&__advice {
@@ -1196,7 +1463,7 @@ h1,p {
 	}
 	&__day {
 		font-size: 1.4rem;
-		font-weight: 900;
+		font-weight: 800;
 	}
 	&__text {
 		font-size: 1.3rem;
@@ -1209,7 +1476,7 @@ h1,p {
 	}
 	&__title-ad {
 		font-size: 2.4rem;
-		font-weight: 900;
+		font-weight: 700;
 		margin-bottom: 20px;
 		position: relative;
 		z-index: 2;
@@ -1224,59 +1491,80 @@ h1,p {
 		position: relative;
 		font-size: 1.4rem;
 		line-height: 18px;
-		padding-right: 27%;
+		padding-right: 28%;
 		&:nth-of-type(2) {
 			margin: 15px 0;
 		}
 	}
 }
+@media screen and (min-width: 400px) {
+	.workout-prog {
+		&__bg {
+			@include myPos(50%,50%,-52%,-40%);
+			&--ad {
+				@include myPos(50%,50%,-53%,-50%);
+				height: auto;
+				width: auto;
+			}
+		}
+	}
+}
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 485px) {
 	.workout-prog {
 		&__wrap {
 			margin: 0 auto;
 			max-width: 450px;
+		}
+		&__lists {
+			max-height: 240px;
 		}
 	}
 }
 @media screen and (min-width: 1200px) {
 	.workout-prog {
 		&__wrap {
+			max-width: 1030px;
 			display: flex;
-			max-width: 100%;
 			justify-content: space-between;
 			align-items: center;
 		}
 		&__lists {
 			overflow: hidden;
-			width: 35%;
 			height: 225px;
 			display: flex;
+			width: 30%;
 			flex-direction: column;
 			justify-content: center;
+			margin-right: 20px;
+		}
+		&__bg {
+			height: 100%;
+			@include myPos(50%,50%,-55%,-50%);
+			&--ad {
+				@include myPos(50%,50%,-45%,-50%);
+					height: auto;
+				}
 		}
 		&__list {
 			margin: 30px 0;
 		}
 		&__advice {
+			flex: 1;
 			overflow: hidden;
-			width: 45%;
 			height: 240px;
 			max-height: 240px;
 			margin: 0;
 			padding: 18px 40px;
-			img {
-				width: 100%;
-				height: auto;
-				@include myPos(50%,50%,-50%,-30%);
-			}
+			
 		}
-		&__bg {
-			@include myPos(50%,50%,-50%,-50%);
-			height: 100%;
-		}
+		
 		&__text {
 			margin-top: 10px;
+		}
+		&__text-ad {
+			padding-right: 15%;
+			font-size: 1.3rem;
 		}
 	}
 }
@@ -1289,7 +1577,7 @@ h1,p {
 	&__title {
 		font-size: 1.8rem;
 		margin-left: 4%;
-		font-weight: 900;
+		font-weight: 800;
 	}
 	&__wrap {
 		margin-top: 5px;
@@ -1332,7 +1620,19 @@ h1,p {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		border-radius: 15px;
+		border-radius: 10px;
+		&--768 {
+			display: none;
+			max-width: 195px;
+			min-width: 195px;
+			margin: 0;
+			height: 77px;
+			max-height: 80px;
+			justify-content: center;
+			.workout-day__link {
+				margin-left: 30px;
+			}
+		}
 	}
 	&__link {
 		color: $default-color;
@@ -1344,15 +1644,45 @@ h1,p {
 		right: -30px;
 		top: 50%;
 		transform: translateY(-50%);
+		&--768 {
+			position: relative;
+			top: 0;
+			right: -15px;
+		}
 	}
 }
-@media screen and (min-width: 720px) {
+@media screen and (min-width:768px) {
 	.workout-day {
 		&__wrap {
 			justify-content: center;
 		}
 	}
 }
+@media screen and (min-width: 1024px) {
+	.workout-day {
+		margin: 20px auto 20px 0;
+		&__wrap {
+			justify-content: space-between;
+			overflow-x: scroll;
+		}
+		&__link-wrap {
+			display: none;
+			&--768 {
+				display: flex;
+				margin: 0;
+			}
+		}
+		&__title {
+			margin: 0 0 5px 0;
+		}
+		&__item {
+			margin: 0 10px 0 0;
+		}
+		
+	}
+}
+
+
 
 
 
@@ -1361,7 +1691,7 @@ h1,p {
 	padding: 40px 0 20px 0;
 	&__title {
 		font-size: 1.8rem;
-		font-weight: 900;
+		font-weight: 800;
 		margin-bottom: 15px;
 		margin-left: 4%;
 	}
@@ -1381,7 +1711,7 @@ h1,p {
 		min-width: 250px;
 		max-width: 310px;
 		height: 200px;
-		border-radius: 15px;
+		border-radius: 10px;
 		color: $default-color;
 		display: flex;
 		flex-direction: column;
@@ -1402,13 +1732,36 @@ h1,p {
 		font-size: 1.476rem;
 	}
 }
+@media screen and (min-width:1024px) {
+	.inventory {
+		&__title {
+			margin-left: 0;
+		}
+		&__item {
+			margin: 0 10px 0 0;
+			min-width: 240px;
+			max-width: 240px;
+		}
+		&__items {
+			justify-content: space-between;
+		}
+		&__name {
+			margin: 20px 0 0 20px;
+		}
+
+	}
+}
 
 
 //schedule block *****************************
-.schedule {
+.schedule-xl {
+	display: none;
+}
+.schedule,
+.schedule-xl {
 	margin: 0 4%;
 	background: $default-color;
-	border-radius: 15px;
+	border-radius: 10px;
 	padding: 15px 0 10px 0;
 	&__wrap {
 		width: 93%;
@@ -1416,7 +1769,7 @@ h1,p {
 	}
 	&__title {
 		font-size: 1.8rem;
-		font-weight: 900;
+		font-weight: 800;
 	}
 	&__icon-wrap {
 		width: 39px;
@@ -1435,6 +1788,15 @@ h1,p {
 		cursor: pointer;
 		&.invert {
 			filter: invert(100%);
+		}
+	}
+	&__name {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		&.invert {
+			color: $default-color;
 		}
 	}
 	&__col {
@@ -1484,7 +1846,6 @@ h1,p {
 	}
 	&__popup {
 		display: none;
-		// display: block;
 		overflow: hidden;
 		position: absolute;
 		z-index: 10;
@@ -1496,7 +1857,7 @@ h1,p {
 		max-width: 440px;
 		min-width: 300px;
 		height: auto;
-		border-radius: 15px;
+		border-radius: 10px;
 		box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
 		&.show-popup {
 			display: block;
@@ -1504,7 +1865,7 @@ h1,p {
 		.popup {
 			&__title {
 				font-size: 1.8rem;
-				font-weight: 900;
+				font-weight: 800;
 				position: relative;
 			}
 			&__text {
@@ -1537,6 +1898,71 @@ h1,p {
 	}
 
 }
+@media screen and (min-width:1024px) {
+	.schedule {
+		display: none;
+		
+	}
+	.schedule-xl {
+		display: block;
+		padding: 30px 15px 45px 15px;
+		margin: 0;
+		&__wrap {
+			width: 100%;
+		}
+		&__table,
+		&__day {
+			&:after,
+			&:before {
+				display: none;
+			}
+		}
+		&__title {
+			margin-bottom: 60px;
+			position: relative;
+			&::after {
+				content: '';
+				display: block;
+				height: 2px;
+				width: 100%;
+				bottom: -30px;
+				position: absolute;
+				background: rgba(0, 0, 0, 0.2);
+			}
+		}
+		&__day {
+			text-align: left;
+			margin-left: 15%;
+		}
+		&__name {
+			font-size: 1.2rem;
+		}
+		&__icon-wrap {
+			background: rgba(0, 0, 0, 0.2);
+			height: 55px;
+			max-width: 120px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			padding: 0 0 0 10%;
+			margin: 5px 0;
+			cursor: pointer;
+		}
+		&__popup {
+			top: 52px;
+			left: -60%;
+		}
+
+	}
+}
+@media screen and (max-width: 1330px) {
+	.schedule-xl {
+		&__icon-wrap {
+			max-width: 90px;
+		}
+	}
+
+}
 
 
 
@@ -1545,7 +1971,7 @@ h1,p {
 //footer block *****************************
 .footer {
 	font-size: 1.4rem;
-	font-weight: 900;
+	font-weight: 800;
 	text-align: center;
 	padding: 15px 0;
 	background: $default-color;
