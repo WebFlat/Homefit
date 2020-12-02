@@ -42,7 +42,7 @@ h1,p {
 
 
 .reg {
-	height: 91vh;
+	height: 100%;
 	color: $default-color;
 	font-size: 1.4rem;
 	&__main {
@@ -52,7 +52,7 @@ h1,p {
 	&__form-bg {
 		padding-top: 40px;
 		background: $bg-reg;
-		height: 90%;
+		height: 75vh;
 	}
 	&__header {
 		display: flex;
@@ -148,7 +148,7 @@ h1,p {
 		padding: 25px 0 0 0;
 		background: $default-color;
 		width: 100%;
-		height: 10%;
+		height: 20vh;
 		a {
 			color: $secondary-color;
 			display: block;
@@ -161,6 +161,25 @@ h1,p {
 	}
 	&__link-conf {
 		margin-top: 10px;
+	}
+}
+@media screen and (max-width: 375px) {
+	.reg {
+		height: auto;
+		&__form-bg {
+			height: auto;
+			padding-top: 30px;
+		}
+		&__link-wrap {
+			margin-bottom: 20px;
+		}
+		&__footer {
+			height: auto;
+			padding: 10px 0 0 0;
+		}
+		&__link-conf {
+			margin-top: 5px;
+		}
 	}
 }
 
@@ -184,9 +203,11 @@ h1,p {
 		}
 		&__footer {
 			background: transparent;
+			height: 10vh;
 		}
 		&__form-bg {
 			border-radius: 10px;
+			height: auto;
 		}
 		&__form {
 			padding: 10px 0 30px 0;

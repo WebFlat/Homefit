@@ -902,7 +902,17 @@ h1,p {
 .current-rate__opt-rad:checked + label:before {
 	background: $btn-color;
 }
-
+@media screen and (max-width: 360px) {
+	.current-rate {
+		&__cart {
+			max-width: 280px;
+			min-width: 280px;
+		}
+		&__cart-descript {
+			font-size: 1.3rem;
+		}
+	}
+}
 @media screen and (min-width: 1024px) {
 	.current-rate {
 		&__container {
@@ -922,14 +932,16 @@ h1,p {
 		&__change {
 			max-height: 193px;
 			min-height: 193px;
-			min-width: 311px;
-			max-width: 311px;
+			min-width: 300px;
+			max-width: 300px;
 			overflow: hidden;
 			padding: 30px 0  0 20px;
 			margin: 0 15px 0 0;
 
 		}
 		&__cart {
+			max-width: 290px;
+			min-width: 290px;
 			&:first-of-type {
 				margin-left: 0;
 			}
